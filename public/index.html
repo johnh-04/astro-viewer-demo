@@ -1,44 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astro Viewer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Astro Viewer</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
 
-        img {
-            max-width: 100%;
-            height: auto;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-
-<body>
-    <h1>NASA Astronomy Picture of the Day</h1>
-    <div id="content">
-        <p>Loading...</p>
-    </div>
-    <script>
-        async function fetchImage() {
-            const response = await fetch('/api/image');
-            const data = await response.json();
-            const contentDiv = document.getElementById('content');
-            contentDiv.innerHTML = `
-                <h2>${data.title}</h2>
-                <p>${data.date}</p>
-                <img src="${data.url}" alt="${data.title}">
-                <p>${data.explanation}</p>
-            `;
-        }
-        fetchImage();
-    </script>
-</body>
+    <body>
+        <h1>NASA Astronomy Picture of the Day</h1>
+        <div id="content">
+            <p>Loading...</p>
+        </div>
+        <script>
+            async function fetchImage() {
+                const response = await fetch('/api/image');
+                const data = await response.json();
+                const contentDiv = document.getElementById('content');
+                contentDiv.innerHTML = `
+                    <h2>${data.title}</h2>
+                    <p>${data.date}</p>
+                    <img src="${data.url}" alt="${data.title}">
+                    <p>${data.explanation}</p>
+                `;
+            }
+            fetchImage();
+        </script>
+    </body>
 
 </html>

@@ -1,14 +1,11 @@
-// server.js
 // https://api.nasa.gov/ -> browse API's
 const express = require('express');
 const axios = require('axios');
 const app = express();
-//const PORT = 3000;
+//const PORT = 3000; (localhost)
 
-// API Key per NASA (richiedila su https://api.nasa.gov/ se non ne hai una)
-const NASA_API_KEY = 'XVwQbDvwKaCgs4HdnkigurCnUL01oaCE3qovRL1L'; // Sostituisci con la tua API Key
+const NASA_API_KEY = 'XVwQbDvwKaCgs4HdnkigurCnUL01oaCE3qovRL1L';
 
-// Endpoint per ottenere l'immagine del giorno
 app.get('/api/image', async (req, res) => {
     try {
         const response = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`);
@@ -19,7 +16,6 @@ app.get('/api/image', async (req, res) => {
     }
 });
 
-// Servire file statici per il frontend
 app.use(express.static('public'));
 
 //app.listen(PORT, () => {
